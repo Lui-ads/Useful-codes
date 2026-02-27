@@ -8,7 +8,7 @@ def escolha():
 Para ver o comando: 1
 Para saber sua função: 2             
 Para ver a sintaxe: 3""")
-    acao = int(input("\nQual sua escolha: "))
+    acao = int(input("\nQual seu número: "))
     return acao
     
 def select ():
@@ -468,7 +468,7 @@ O atributo é de qual tipo:
 4 - Booleano
 5 - Bináriao:
 
-: """))
+Qual seu número: """))
 
         if tipo == 1:
             usar = int(input("""
@@ -476,7 +476,7 @@ Qual devo usar:
 1 - CHAR
 2 - VARCHAR
 3 - TEXT                  
-: """))
+Qual seu número: """))
             if usar == 1:
                 tipo_str = "CHAR"
             elif usar == 2:
@@ -491,7 +491,7 @@ Qual devo usar:
 1 - INT
 2 - FLOAT 
 3 - DECIMAL                            
-: """))
+Qual seu número: """))
             if usar == 1:
                 tipo_str = "INT"
             elif usar == 2:
@@ -507,7 +507,7 @@ Qual devo usar:
 1 - DATE
 2 - TIME
 3 - TIMESTAMP                             
-: """))
+Qual seu número: """))
             if usar == 1:
                 tipo_str = "DATE"
             elif usar == 2:
@@ -524,7 +524,7 @@ Qual devo usar:
 Qual devo usar:
 1 - BLOB
 2 - BIT
-: """))
+Qual seu número: """))
             if usar == 1:
                 tipo_str = "BLOB"
             elif usar == 2:
@@ -540,7 +540,7 @@ Qual devo usar:
 Seu atributo é uma chave primária (PK)
 1 - Sim
 2 - Não                              
-: """))
+Qual seu número: """))
             if pk_ou_nao == 1:
                 definicao += " PRIMARY KEY"
                 valor = True
@@ -574,8 +574,9 @@ os.system("cls" if os.name == "nt" else "clear")
 time.sleep(0.2)
 while True:
     try:
+        pulo = False
         print("""
-O que você precisa saber:
+Qual letra você vai escolher:
 
 a - SELECT
 b - WHERE
@@ -598,12 +599,12 @@ Para criar uma tabela com ajuda escreva: Criar
 Para sair, digite: Sair
             """)
 
-        opcao = input("Qual sua escolha: ")
-        opcao = opcao.lower()
+        opcao = input("Qual letra vai ser: ")
+        opcao = opcao.strip().lower()
 
         if opcao == "a":
             resultado = select()
-        elif opcao == "c":
+        elif opcao == "b":
             resultado = where()
         elif opcao == "c":
             resultado = distinct()
@@ -631,12 +632,19 @@ Para sair, digite: Sair
             resultado = alias()
         elif opcao == "o":
             resultado = update()
+        
         elif opcao == "p":
             resultado = delete()
+        
         elif opcao == "q":
             resultado = tipos()
         elif opcao == "criar":
             resultado = criacao()
+        elif opcao == "limpar":
+            os.system("cls" if os.name == "nt" else "clear")
+            resultado = ""
+            pulo = True
+            time.sleep(0.2)
         elif opcao == "sair":
             time.sleep(0.5)
             os.system("cls" if os.name == "nt" else "clear")
@@ -648,6 +656,9 @@ Para sair, digite: Sair
             
         time.sleep(0.2)
         print(f"\n{resultado}\n")
-        input("De enter para voltar ao início")
+        if pulo == False:
+            input("De enter para voltar ao início\n\n")
+        else:
+            continue
     except:
         break
