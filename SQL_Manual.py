@@ -1,4 +1,4 @@
-# Essa é aversão 1.0 do SQL Manual, quando eu atualizar irei atualizar aqui no GitHub também
+# Essa é a versão 1.0 do SQL Manual, quando eu atualizar irei atualizar aqui no GitHub também
 
 import time
 import os
