@@ -395,7 +395,7 @@ def update():
         return "Escolha inválida"
     
 def delete():
-    acao = escolha
+    acao = escolha()
     
     comando = "DELETE"
     funcao = "Ele remove linhas de uma tabela"
