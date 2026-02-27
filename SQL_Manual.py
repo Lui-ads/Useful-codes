@@ -335,7 +335,7 @@ def order_by():
     acao = escolha()
     
     comando = "ORDER BY"
-    funcao = "Ele ordena as resultados ds pesquisa em crescente (ASC) ou decrescente (DESC)."
+    funcao = "Ele ordena os resultados das pesquisa em crescente (ASC) ou decrescente (DESC)."
     sintaxe = """
     SELECT colunas FROM tabela ORDER BY coluna DESC;
     SELECT colunas FROM tabela ORDER BY coluna ASC
