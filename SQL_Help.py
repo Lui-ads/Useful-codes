@@ -499,6 +499,33 @@ TCL (TRANSACTION CONTROL LANGUAGE):
         resposta = "Opção inválida"
         return resposta
     
+def agregações():
+    resposta = """
+As agregações são:
+    COUNT()  - Conta linhas
+    SUM()    - Soma valores numéricos
+    AVG()    - Calcula a média
+    MAX()    - Retorna o maior valor
+    MIN()    - Retorna o menor valor    
+
+Exemplos de agregações:
+
+    COUNT(*): SELECT COUNT(*) FROM clientes;
+    COUNT(coluna): SELECT COUNT(email) FROM clientes;
+    COUNT(DISTINCT): SELECT COUNT(DISTINCT pais) FROM clientes;
+
+    SUM: SELECT SUM(valor) FROM pedidos;
+    AVG: SELECT AVG(valor) FROM pedidos;
+    MAX: SELECT MAX(valor) FROM pedidos;
+    MIN: SELECT MIN(valor) FROM pedidos;
+
+    COM GROUP BY:
+    SELECT categoria, COUNT(*), AVG(preco) 
+    FROM produtos 
+    GROUP BY categoria;    
+    """
+    return resposta
+    
 def criacao():
     valor = False
     tabela = []
@@ -651,6 +678,7 @@ o - UPDATE
 p - DELETE
 q - Tipos
 r - Subconjuntos
+t - Agregações
 
 Para criar uma tabela com ajuda escreva: Criar
 Para sair, digite: Sair
@@ -699,6 +727,8 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
             resultado = tipos()
         elif opcao == "r":
             resultado = subconjuntos()
+        elif opcao == "t":
+            resultado = agregações()
         elif opcao == "criar":
             resultado = criacao()
         elif opcao == "limpar":
