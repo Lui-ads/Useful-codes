@@ -1921,6 +1921,7 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
         print(f"\n{resultado}\n")
         if pulo == False:
             input("De enter para voltar ao início\n\n")
+            os.system("cls" if os.name == "nt" else "clear")
         else:
             continue
     except:
