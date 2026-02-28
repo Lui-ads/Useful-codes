@@ -454,13 +454,20 @@ Obs.: Existem outros tipos, mas esses são os mais usados
 def subconjuntos():
     acao = int(input("""
 Qual número você vai escolher:
-1 - DDL
-2 - DML
-3 - DCL
-4 - TCL          
+1 - Função dos Subconjuntos
+2 - DDL
+3 - DML
+4 - DCL
+5 - TCL          
 Qual seu número: """))
     
     if acao == 1:
+        resposta = """
+As funções de subconjuntos fazem parte das funções de agregação, mas com um comportamento específico:
+    Elas operam em subconjuntos de dados definidos por filtros ou condições  
+"""
+        return resposta
+    elif acao == 2:
         resposta = """
 DDL (Lida com a ESTRUTURA do banco de dados):
     Lida com a ESTRUTURA do banco de dados
@@ -471,7 +478,7 @@ DDL (Lida com a ESTRUTURA do banco de dados):
         RENAME  - Renomeia objetos (tabelas, colunas)
 """
         return resposta
-    elif acao == 2:
+    elif acao == 3:
         resposta = """
 DML (DATA MANIPULATION LANGUAGE):
     Lida com os DADOS dentro das tabelas
@@ -481,7 +488,7 @@ DML (DATA MANIPULATION LANGUAGE):
         DELETE  - Remove registros específicos
 """
         return resposta
-    elif acao == 3:
+    elif acao == 4:
         resposta = """
 DCL (DATA CONTROL LANGUAGE): 
     Controla permissões e acesso
@@ -489,7 +496,7 @@ DCL (DATA CONTROL LANGUAGE):
         REVOKE  - Remove permissões
 """
         return resposta
-    elif acao == 4:
+    elif acao == 5:
         resposta = """
 TCL (TRANSACTION CONTROL LANGUAGE):
     Gerencia transações
@@ -722,10 +729,8 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
             resultado = alias()
         elif opcao == "o":
             resultado = update()
-        
         elif opcao == "p":
             resultado = delete()
-        
         elif opcao == "q":
             resultado = tipos()
         elif opcao == "r":
