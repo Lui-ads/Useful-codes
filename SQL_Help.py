@@ -148,6 +148,10 @@ Exemplo 2:
         GROUP BY MONTH(data)
     ) AS vendas_mensais
     ORDER BY mes;
+
+Obs.: Sobre tabela.coluna:
+    Quando você vê algo como 'clientes.nome', significa: 
+        PRIMEIRO vem o nome da TABELA (clientes), DEPOIS vem um PONTO (.) e por ÚLTIMO vem o nome da COLUNA (nome)
 """
     
     if acao == 1:
@@ -634,6 +638,10 @@ CROSS JOIN:
         SELECT clientes.nome, pedidos.produto
         FROM clientes
         CROSS JOIN pedidos;
+        
+Obs.: Sobre tabela.coluna:
+    Quando você vê algo como 'clientes.nome', significa: 
+        PRIMEIRO vem o nome da TABELA (clientes), DEPOIS vem um PONTO (.) e por ÚLTIMO vem o nome da COLUNA (nome)
 """
     
     if acao == 1:
@@ -1770,8 +1778,12 @@ Qual número você vai escolher:
                                            | 48 - Para sair                       |   
                                            +--------------------------------------+
 
-Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para tudo funcionar, não esqueça dele :)
-            """)
+Obs.: Lembre-se de duas coisas:
+    1 - Ao fazer um Banco de Dados em SQL o ; é muito importante para tudo funcionar, não esqueça dele
+    2 - No uso do SQL quando for usar tabela.coluna, lembre que primeiro vem a TABELA, depois a COLUNA
+    
+    :)
+""")
 
         opcao = input("Qual número vai ser: ")
         opcao = opcao.strip().lower()
