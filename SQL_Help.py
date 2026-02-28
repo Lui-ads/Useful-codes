@@ -293,6 +293,7 @@ def operadores_de_comparacao():
         SELECT * FROM pedidos WHERE valor > 200; 
         SELECT * FROM pedidos WHERE valor <> 200;
 
+    Obs.: O * é um Operador_Coringa / Wildcard que representa TUDO ou TODOS OS ELEMENTOS em determinado contexto
     """
     
     if acao == 1:
@@ -322,6 +323,8 @@ def operadores_logicos():
         OR: SELECT * FROM pedidos WHERE status = ‘Pendente’ OR status = ‘Processando’;
 
         NOT: SELECT * FROM pedidos WHERE NOT status = ‘Cancelado’;
+        
+    Obs.: O * é um Operador_Coringa / Wildcard que representa TUDO ou TODOS OS ELEMENTOS em determinado contexto
     """
     
     if acao == 1:
