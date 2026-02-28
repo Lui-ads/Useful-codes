@@ -8,7 +8,7 @@ def escolha():
 Para ver o comando: 1
 Para saber sua função: 2             
 Para ver a sintaxe: 3""")
-    acao = int(input("\nQual seu número: "))
+    acao = input("\nQual seu número: ")
     return acao
        
 def select():
@@ -26,11 +26,11 @@ def select():
     Obs.: Na consulta na dúvida use aspas simples '' quando for comparar com um String
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -46,11 +46,11 @@ def where():
     Exemplo: SELECT * FROM clientes WHERE pais = 'Brasil';
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -66,11 +66,11 @@ def distinct():
     Exemplo: SELECT DISTINCT pais FROM clientes; -- Aqui só vai ser mostrado uma vez cada País
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -89,11 +89,11 @@ def order_by():
         SELECT * FROM clientes ORDER BY id DESC;
     """
         
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -109,11 +109,11 @@ def alias():
     Exemplo: SELECT email AS email_cliente FROM clientes;
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -154,11 +154,11 @@ Obs.: Sobre tabela.coluna:
         PRIMEIRO vem o nome da TABELA (clientes), DEPOIS vem um PONTO (.) e por ÚLTIMO vem o nome da COLUNA (nome)
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -183,11 +183,11 @@ def insert_into():
         Obs.: Tudo que vai ser adicionado tem que estar na ordem que foi descrita, id, nome e preco 
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -219,11 +219,11 @@ def insert_into_select():
         WHERE pais = 'Brasil’;
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -239,11 +239,11 @@ def update():
     Exemplo: UPDATE clientes SET email = 'novo@email.com’ WHERE id = 1;
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -261,11 +261,11 @@ def delete():
     Obs.: Posso usar também o TRUNCATE, ele é tipo um DELETE, mas sem possibilidade de condições.
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -288,11 +288,11 @@ def create_table():
             );
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -313,11 +313,11 @@ def alter_table():
     Obs.: Posso usar outras opções além do ADD, como o DROP etc...
     """
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -333,11 +333,11 @@ def drop_table():
     Exemplo: DROP TABLE clientes_backup;
     """                
                     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -360,11 +360,11 @@ def pk():
             );
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -403,11 +403,11 @@ def fk():
             );
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -644,11 +644,11 @@ Obs.: Sobre tabela.coluna:
         PRIMEIRO vem o nome da TABELA (clientes), DEPOIS vem um PONTO (.) e por ÚLTIMO vem o nome da COLUNA (nome)
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -693,11 +693,11 @@ Exemplo 5:
     GROUP BY estado, cidade;   
 """ 
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -743,11 +743,11 @@ Exemplo 4:
 
 """
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -784,11 +784,11 @@ WHERE (
     WHERE p.cliente_id = c.id
 ) > 5;     
 """
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -823,11 +823,11 @@ Exemplo 3:
     ORDER BY data_contratacao DESC
     LIMIT 3; 
 """
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -862,11 +862,11 @@ Exemplo 3:
     ORDER BY preco DESC
     LIMIT 10 OFFSET 20;    
 """
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -901,11 +901,11 @@ Exemplo 3:
     LIMIT 10 OFFSET 20;
 """    
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -946,11 +946,11 @@ Exemplo 3:
     MODIFY telefone VARCHAR(20) NOT NULL;
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -992,11 +992,11 @@ Exemplo 3:
     ADD CONSTRAINT unique_cpf UNIQUE (cpf);
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1038,11 +1038,11 @@ Exemplo 3:
     -- data_cadastro vai ser hoje, ativo = TRUE, plano = 'Básico'    
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1104,11 +1104,11 @@ Exemplo 4 com Check completo:
     );
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1147,11 +1147,11 @@ Exemplo 4:
     ON pedidos (data_pedido);
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida" 
@@ -1181,11 +1181,11 @@ Exemplo 3:
     DROP INDEX idx_cpf ON clientes;
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida" 
@@ -1234,11 +1234,11 @@ Exemplo 3 com  View com JOIN:
     INNER JOIN pedidos p ON c.id = p.cliente_id;
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida" 
@@ -1261,11 +1261,11 @@ Exemplo 3:
     DROP VIEW IF EXISTS vw_pedidos_detalhados;
 """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"     
@@ -1315,11 +1315,11 @@ Exemplo:
         END AS situacao
     FROM alunos;
 """
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida" 
@@ -1344,11 +1344,11 @@ Exemplo:
     -- Nada foi salvo permanentemente ainda
 """
  
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"  
@@ -1370,11 +1370,11 @@ Exemplo:
     COMMIT;  -- Agora os dados estão salvos permanentemente
     """
     
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1399,11 +1399,11 @@ Exemplo:
 
     -- Tabela produtos continua como estava antes
 """
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1433,11 +1433,11 @@ Exemplo:
 
     COMMIT;  -- Salva cliente + pedido correto
 """
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1472,11 +1472,11 @@ Exemplo 3 Produtos com estoque baixo OU pedidos pendentes:
     WHERE pe.status = 'Pendente';
 """
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1511,11 +1511,11 @@ Exemplo 3 Log de atividades (manter todas as entradas):
     LIMIT 100;    
 """
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1545,11 +1545,11 @@ Exemplo 3 Cidades com clientes E fornecedores:
     SELECT cidade FROM fornecedores;    
 """
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1580,11 +1580,11 @@ Exemplo 3 Funcionários que NÃO são clientes:
     SELECT cpf, nome FROM clientes;
 """
 
-    if acao == 1:
+    if acao == "1":
         return comando
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
