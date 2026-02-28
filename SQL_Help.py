@@ -11,7 +11,7 @@ Para ver a sintaxe: 3""")
     acao = int(input("\nQual seu número: "))
     return acao
        
-def select ():
+def select():
     acao = escolha()
     
     comando = "SELECT"
@@ -22,6 +22,8 @@ def select ():
     Exemplo 1: SELECT nome_cliente, email FROM clientes;
     
     Exemplo 2: SELECT * FROM clientes -- Esse seleciona tudo da tabela e mostra;
+    
+    Obs.: Na consulta na dúvida use aspas simples '' quando for comparar com um String
     """
     
     if acao == 1:
@@ -33,7 +35,7 @@ def select ():
     else:
         return "Escolha inválida"
     
-def where ():
+def where():
     acao = escolha()
     
     comando = "WHERE" 
@@ -41,7 +43,7 @@ def where ():
     sintaxe = """
     SELECT colunas FROM tabela WHERE condicao;
     
-    Exemplo: SELECT * FROM clientes WHERE pais = ‘Brasil’;
+    Exemplo: SELECT * FROM clientes WHERE pais = 'Brasil';
     """
     
     if acao == 1:
@@ -53,6 +55,69 @@ def where ():
     else:
         return "Escolha inválida"
 
+def distinct():
+    acao = escolha()
+    
+    comando = "DISTINCT"
+    funcao = "Ele remove duplicatas, em outras palavras ele evita redundâncias eliminando linhas duplicadas no resultado da consulta"
+    sintaxe = """
+    SELECT DISTINCT coluna FROM tabela;
+    
+    Exemplo: SELECT DISTINCT pais FROM clientes; -- Aqui só vai ser mostrado uma vez cada País
+    """
+    
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
+def order_by():
+    acao = escolha()
+    
+    comando = "ORDER BY"
+    funcao = "Ele ordena os resultados das pesquisa em crescente (ASC) ou decrescente (DESC)."
+    sintaxe = """
+    SELECT colunas FROM tabela ORDER BY coluna DESC;
+    SELECT colunas FROM tabela ORDER BY coluna ASC
+    
+    Exemplo:
+        SELECT * FROM clientes ORDER BY nome ASC; 
+        SELECT * FROM clientes ORDER BY id DESC;
+    """
+        
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
+def alias():
+    acao = escolha()
+    
+    comando = "AS"
+    funcao = "Ele da um nome temporário a colunas"
+    sintaxe = """
+    SELECT coluna AS apelido FROM tabela;
+    
+    Exemplo: SELECT email AS email_cliente FROM clientes;
+    """
+    
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
 def fron():
     acao = escolha()
     
@@ -93,57 +158,25 @@ Exemplo 2:
         return sintaxe
     else:
         return "Escolha inválida"
-
-def sub_correla():
-    acao = escolha()
-
-    comando = "WHERE e FROM"
-    funcao = "Subconsulta que referencia colunas da consulta externa, executada para cada linha da consulta principal"
-    sintaxe = """
-SELECT colunas
-FROM tabela_principal AS alias1
-WHERE coluna OPERADOR (SELECT subconsulta 
-                    FROM tabela_secundaria AS alias2 
-                    WHERE alias2.coluna = alias1.coluna);
-
-Exemplo 1:
--- Funcionários com salário acima da média do seu departamento
-SELECT f1.nome, f1.salario, f1.departamento
-FROM funcionarios f1
-WHERE salario > (
-    SELECT AVG(salario)
-    FROM funcionarios f2
-    WHERE f2.departamento = f1.departamento
-);
-
-Exemplo 2:
--- Clientes com mais de 5 pedidos
-SELECT c.nome, c.email
-FROM clientes c
-WHERE (
-    SELECT COUNT(*)
-    FROM pedidos p
-    WHERE p.cliente_id = c.id
-) > 5;     
-"""
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
     
-def distinct():
+def insert_into():
     acao = escolha()
     
-    comando = "DISTINCT"
-    funcao = "Ele remove duplicatas, em outras palavras ele evita redundâncias eliminando linhas duplicadas no resultado da consulta"
+    comando = "INSERT INTO"
+    funcao = "É usado para inserir novos registros a tabela"
     sintaxe = """
-    SELECT DISTINCT coluna FROM tabela;
+    INSERT INTO tabela (coluna1, coluna2) 
+    VALUES  
+        (valor1, valor2);
     
-    Exemplo: SELECT DISTINCT pais FROM clientes; -- Aqui só vai ser mostrado uma vez cada País
+    Exemplo: 
+        INSERT INTO produtos (id, nome, preco)
+        VALUES 
+            (1, 'Notebook', 2500.00),
+            (2, 'Mouse', 50.00),
+            (3, 'Teclado', 120.00);
+        
+        Obs.: Tudo que vai ser adicionado tem que estar na ordem que foi descrita, id, nome e preco 
     """
     
     if acao == 1:
@@ -155,8 +188,85 @@ def distinct():
     else:
         return "Escolha inválida"
     
+def insert_into_select():
+    acao = escolha()
+    
+    comando = "INSERT INTO + SELECT"
+    funcao = "Ele insere dados em uma tabela a partir do resultado de uma consulta SELECT feita em outra tabela (ou na própria)"
+    sintaxe = """
+    INSERT INTO nova_tabela (colunas) 
+    SELECT colunas FROM tabela_origem 
+    WHERE condicao;
+    
+    Exemplo comentado:
+        -- Insere na tabela 'clientes_brasil' só os clientes do Brasil
+        
+        INSERT INTO clientes_brasil (id, nome, email) 
+        
+        -- Acha os clientes BR na tabela 'clientes'
+        SELECT id, nome, email FROM clientes 
+        
+        -- Filtra somente os com 'pais' igual a 'Brasil'
+        WHERE pais = 'Brasil’;
 
-def creat_table ():
+    Exemplo não comentado
+        INSERT INTO clientes_brasil (id, nome, email) 
+        SELECT id, nome, email FROM clientes 
+        WHERE pais = 'Brasil’;
+    """
+    
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
+def update():
+    acao = escolha()
+    
+    comando = "UPDATE"
+    funcao = "Ele é usado para modificar dados existentes em uma ou mais linhas de uma tabela"
+    sintaxe = """
+    UPDATE tabela SET coluna = valor WHERE condicao;
+    
+    Exemplo: UPDATE clientes SET email = 'novo@email.com’ WHERE id = 1;
+    """
+    
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
+def delete():
+    acao = escolha()
+    
+    comando = "DELETE"
+    funcao = "Ele remove linhas de uma tabela"
+    sintaxe = """
+    DELETE FROM tabela WHERE condicao;
+    
+    Exemplo: DELETE FROM clientes WHERE id = 5;
+    
+    Obs.: Posso usar também o TRUNCATE, ele é tipo um DELETE, mas sem possibilidade de condições.
+    """
+    
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
+def create_table():
     acao = escolha()
     
     comando = "CREATE TABLE"
@@ -298,76 +408,11 @@ def fk():
     else:
         return "Escolha inválida"
     
-def insert_into():
-    acao = escolha()
-    
-    comando = "INSERT INTO"
-    funcao = "É usado para inserir novos registros a tabela"
-    sintaxe = """
-    INSERT INTO tabela (coluna1, coluna2) 
-    VALUES  
-        (valor1, valor2);
-    
-    Exemplo: 
-        INSERT INTO produtos (id, nome, preco)
-        VALUES 
-            (1, 'Notebook', 2500.00),
-            (2, 'Mouse', 50.00),
-            (3, 'Teclado', 120.00);
-        
-        Obs.: Tudo que vai ser adicionado tem que estar na ordem que foi descrita, id, nome e preco 
-    """
-    
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
-def insert_into_select():
-    acao = escolha()
-    
-    comando = "INSERT INTO + SELECT"
-    funcao = "Ele insere dados em uma tabela a partir do resultado de uma consulta SELECT feita em outra tabela (ou na própria)"
-    sintaxe = """
-    INSERT INTO nova_tabela (colunas) 
-    SELECT colunas FROM tabela_origem 
-    WHERE condicao;
-    
-    Exemplo comentado:
-        -- Insere na tabela 'clientes_brasil' só os clientes do Brasil
-        
-        INSERT INTO clientes_brasil (id, nome, email) 
-        
-        -- Acha os clientes BR na tabela 'clientes'
-        SELECT id, nome, email FROM clientes 
-        
-        -- Filtra somente oscom 'pais' igual a 'Brasil'
-        WHERE pais = ‘Brasil’;
-
-    Exemplo ńão comentado
-        INSERT INTO clientes_brasil (id, nome, email) 
-        SELECT id, nome, email FROM clientes 
-        WHERE pais = ‘Brasil’;
-    """
-    
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
 def operadores_de_comparacao():
     acao = escolha()
     
-    comandos = "=, <, >, >=, >= e <>,"
-    funcao = "Eles comparam coisas para ver qual é maior, menor, igual ou diferene"
+    comandos = "=, <, >, <=, >=, <>"
+    funcao = "Eles comparam coisas para ver qual é maior, menor, igual ou diferente"
     sintaxe = """
     algo <> algo_2
     
@@ -400,11 +445,11 @@ def operadores_logicos():
     NOT: NOT condicao
     
     Exemplos:
-        AND: SELECT * FROM pedidos WHERE valor > 200 AND status = ‘Pendente’;
+        AND: SELECT * FROM pedidos WHERE valor > 200 AND status = 'Pendente’;
         
-        OR: SELECT * FROM pedidos WHERE status = ‘Pendente’ OR status = ‘Processando’;
+        OR: SELECT * FROM pedidos WHERE status = 'Pendente’ OR status = 'Processando’;
 
-        NOT: SELECT * FROM pedidos WHERE NOT status = ‘Cancelado’;
+        NOT: SELECT * FROM pedidos WHERE NOT status = 'Cancelado’;
         
     Obs.: O * é um Operador_Coringa / Wildcard que representa TUDO ou TODOS OS ELEMENTOS em determinado contexto
     """
@@ -418,97 +463,14 @@ def operadores_logicos():
     else:
         return "Escolha inválida"
     
-def order_by():
-    acao = escolha()
-    
-    comando = "ORDER BY"
-    funcao = "Ele ordena os resultados das pesquisa em crescente (ASC) ou decrescente (DESC)."
-    sintaxe = """
-    SELECT colunas FROM tabela ORDER BY coluna DESC;
-    SELECT colunas FROM tabela ORDER BY coluna ASC
-    
-    Exemplo:
-        SELECT * FROM clientes ORDER BY nome ASC; 
-        SELECT * FROM clientes ORDER BY id DESC;
-    """
-        
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
-def alias():
-    acao = escolha()
-    
-    comando = "AS"
-    funcao = "Ele da um nome temporário a colunas"
-    sintaxe = """
-    SELECT coluna AS apelido FROM tabela;
-    
-    Exemplo: SELECT email AS email_cliente FROM clientes;
-    """
-    
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
-def update():
-    acao = escolha()
-    
-    comando = "UPDATE"
-    funcao = "Ele é usado para modificar dados existentes em uma ou mais linhas de uma tabela"
-    sintaxe = """
-    UPDATE tabela SET coluna = valor WHERE condicao;
-    
-    Exemplo: UPDATE clientes SET email = ‘novo@email.com’ WHERE id = 1;
-    """
-    
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
-def delete():
-    acao = escolha()
-    
-    comando = "DELETE"
-    funcao = "Ele remove linhas de uma tabela"
-    sintaxe = """
-    DELETE FROM tabela WHERE condicao;
-    
-    Exemplo: DELETE FROM clientes WHERE id = 5;
-    
-    Obs.: Posso usar também o TUNCATE, ele é tipo um DELETE, mas sem possíbilidade de condições.
-    """
-    
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
 def tipos():
     tipo = """
 Texto (String):
     CHAR: Armazena strings de tamanho fixo. Usado quando os valores têm um comprimento constante
     VARCHAR: Armazena strings de tamanho variável. Apropriado para valores com comprimentos variáveis
-    TEXTO (TEXT): Armazena strings muito longas, como documentos ou descrições
+    TEXT: Armazena strings muito longas, como documentos ou descrições
+    
+    Obs.: Na consulta na dúvia use aspas simples ''
 
 Numérico:
     INTEGER (INT): Armazena números inteiros
@@ -532,6 +494,33 @@ Obs.: Existem outros tipos, mas esses são os mais usados
 
     return tipo
     
+def agregacoes():
+    resposta = """
+As agregações são:
+    COUNT()  - Conta linhas
+    SUM()    - Soma valores numéricos
+    AVG()    - Calcula a média
+    MAX()    - Retorna o maior valor
+    MIN()    - Retorna o menor valor    
+
+Exemplos de agregações:
+
+    COUNT(*): SELECT COUNT(*) FROM clientes;
+    COUNT(coluna): SELECT COUNT(email) FROM clientes;
+    COUNT(DISTINCT): SELECT COUNT(DISTINCT pais) FROM clientes;
+
+    SUM: SELECT SUM(valor) FROM pedidos;
+    AVG: SELECT AVG(valor) FROM pedidos;
+    MAX: SELECT MAX(valor) FROM pedidos;
+    MIN: SELECT MIN(valor) FROM pedidos;
+
+    COM GROUP BY:
+    SELECT categoria, COUNT(*), AVG(preco) 
+    FROM produtos 
+    GROUP BY categoria;    
+    """
+    return resposta
+
 def subconjuntos():
     acao = int(input("""
 Qual número você vai escolher:
@@ -590,33 +579,6 @@ TCL (TRANSACTION CONTROL LANGUAGE):
         resposta = "Opção inválida"
         return resposta
     
-def agregacoes():
-    resposta = """
-As agregações são:
-    COUNT()  - Conta linhas
-    SUM()    - Soma valores numéricos
-    AVG()    - Calcula a média
-    MAX()    - Retorna o maior valor
-    MIN()    - Retorna o menor valor    
-
-Exemplos de agregações:
-
-    COUNT(*): SELECT COUNT(*) FROM clientes;
-    COUNT(coluna): SELECT COUNT(email) FROM clientes;
-    COUNT(DISTINCT): SELECT COUNT(DISTINCT pais) FROM clientes;
-
-    SUM: SELECT SUM(valor) FROM pedidos;
-    AVG: SELECT AVG(valor) FROM pedidos;
-    MAX: SELECT MAX(valor) FROM pedidos;
-    MIN: SELECT MIN(valor) FROM pedidos;
-
-    COM GROUP BY:
-    SELECT categoria, COUNT(*), AVG(preco) 
-    FROM produtos 
-    GROUP BY categoria;    
-    """
-    return resposta
-
 def join():
     acao = escolha()
     
@@ -782,6 +744,47 @@ Exemplo 4:
     else:
         return "Escolha inválida"
     
+def sub_correla():
+    acao = escolha()
+
+    comando = "WHERE e FROM"
+    funcao = "Subconsulta que referencia colunas da consulta externa, executada para cada linha da consulta principal"
+    sintaxe = """
+SELECT colunas
+FROM tabela_principal AS alias1
+WHERE coluna OPERADOR (SELECT subconsulta 
+                    FROM tabela_secundaria AS alias2 
+                    WHERE alias2.coluna = alias1.coluna);
+
+Exemplo 1:
+-- Funcionários com salário acima da média do seu departamento
+SELECT f1.nome, f1.salario, f1.departamento
+FROM funcionarios f1
+WHERE salario > (
+    SELECT AVG(salario)
+    FROM funcionarios f2
+    WHERE f2.departamento = f1.departamento
+);
+
+Exemplo 2:
+-- Clientes com mais de 5 pedidos
+SELECT c.nome, c.email
+FROM clientes c
+WHERE (
+    SELECT COUNT(*)
+    FROM pedidos p
+    WHERE p.cliente_id = c.id
+) > 5;     
+"""
+    if acao == 1:
+        return comando
+    elif acao == 2:
+        return funcao
+    elif acao == 3:
+        return sintaxe
+    else:
+        return "Escolha inválida"
+    
 def limit():
     acao = escolha()
     
@@ -860,7 +863,7 @@ Exemplo 3:
     else:
         return "Escolha inválida"
     
-def limit_and_offser():
+def limit_and_offset():
     acao = escolha()
     comando = "LIMIT com OFFSET (forma abreviada)"
     funcao = """
@@ -1036,7 +1039,6 @@ Exemplo 3:
     else:
         return "Escolha inválida"
     
-    
 def check():
     acao = escolha()
     comando = "CHECK"
@@ -1107,7 +1109,7 @@ def create_index():
     acao = escolha()       
     comando = "CREATE INDEX"
     funcao = "Cria uma estrutura de índice para acelerar buscas em colunas específicas, melhorando a performance de consultas"
-    sintaxe = """"
+    sintaxe = """
 -- Índice simples em uma coluna
 CREATE INDEX nome_indice
 ON tabela (coluna);
@@ -1151,7 +1153,7 @@ def drop_index():
     
     comando = "DROP INDEX"
     funcao = "Remove um índice existente do banco de dados"
-    sintaxe = """"
+    sintaxe = """
 MySQL / MariaDB
     DROP INDEX nome_indice ON tabela;
 
@@ -1180,14 +1182,14 @@ Exemplo 3:
     else:
         return "Escolha inválida" 
     
-def creat_view():
+def create_view():
     acao = escolha()       
     
     comando = "CREATE VIEW"
     funcao = """
 Cria uma visão (tabela virtual) baseada no resultado de uma consulta SELECT, permitindo reutilizar consultas complexas
 """
-    sintaxe = """"
+    sintaxe = """
 CREATE VIEW nome_view AS
 SELECT colunas
 FROM tabelas
@@ -1238,7 +1240,7 @@ def drop_view():
     
     comando = "DROP VIEW"
     funcao = "Remove uma view existente do banco de dados"
-    sintaxe = """"
+    sintaxe = """
 DROP VIEW nome_view;
 
 Exemplo 1: 
@@ -1314,7 +1316,6 @@ Exemplo:
     else:
         return "Escolha inválida" 
     
-    
 def begin_start():
     acao = escolha()
     
@@ -1343,7 +1344,7 @@ Exemplo:
         return sintaxe
     else:
         return "Escolha inválida"  
-    
+
 def commit():
     acao = escolha()
     
@@ -1399,7 +1400,7 @@ Exemplo:
     else:
         return "Escolha inválida"
  
-def savepont():
+def savepoint():
     acao = escolha()
     
     comando = "SAVEPOINT"
@@ -1432,52 +1433,18 @@ Exemplo:
         return sintaxe
     else:
         return "Escolha inválida"
-
-def Comando():
-    acao = escolha()
-    comando = ""
-    funcao = ""
-    sintaxe = """"
-    
-"""
-
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
-    
-def Comando():
-    acao = escolha()
-    comando = ""
-    funcao = ""
-    sintaxe = """"
-    
-"""
-
-    if acao == 1:
-        return comando
-    elif acao == 2:
-        return funcao
-    elif acao == 3:
-        return sintaxe
-    else:
-        return "Escolha inválida"
     
 def union():
     acao = escolha()
     
     comando = "UNION"
     funcao = "Combina resultados de duas ou mais consultas, eliminando linhas duplicadas"
-    sintaxe = """"
+    sintaxe = """
 SELECT colunas FROM tabela1
 UNION
 SELECT colunas FROM tabela2;
 
-Exemplo 1 listando todos os clientes e fonecedores:
+Exemplo 1 listando todos os clientes e fornecedores:
     SELECT nome, email, 'Cliente' AS tipo FROM clientes
     UNION
     SELECT nome, email, 'Fornecedor' AS tipo FROM fornecedores
@@ -1510,7 +1477,7 @@ def union_all():
     acao = escolha()
     comando = "UNION ALL"
     funcao = "Combina resultados de duas ou mais consultas, MANTENDO todas as linhas (inclusive duplicatas)"
-    sintaxe = """"
+    sintaxe = """
 SELECT colunas FROM tabela1
 UNION ALL
 SELECT colunas FROM tabela2;
@@ -1549,7 +1516,7 @@ def intersect():
     acao = escolha()
     comando = "INTERSECT"
     funcao = "Retorna apenas as linhas que existem em AMBAS as consultas (interseção)"
-    sintaxe = """"
+    sintaxe = """
 SELECT colunas FROM tabela1
 INTERSECT
 SELECT colunas FROM tabela2;
@@ -1619,7 +1586,7 @@ def criacao():
     tabela = []
     fk_list = []  # Lista para guardar as FKs
     soma = 0
-    print("\nVamos criar usa tabela :)\n")
+    print("\nVamos criar sua tabela :)\n")
     nome_tabela = input("Qual o nome da sua tabela: ")
     loop = int(input("\nQuantos atributos vai ter: "))
     
@@ -1636,7 +1603,7 @@ O atributo é de qual tipo:
 2 - Numérico
 3 - Data/hora
 4 - Booleano
-5 - Bináriao:
+5 - Binário:
 
 Qual seu número: """))
 
@@ -1746,7 +1713,7 @@ Observação Importante:
     de dados, estrutura de tabelas, joins, agrupamentos, subconsultas 
     e constraints
     
-Esse Software não mostras os recursos avançados como:
+Este software não mostra os recursos avançados como:
     - Window Functions
     - Stored Procedures e Functions
     - Triggers
@@ -1765,8 +1732,8 @@ def agradecimentos():
 Alura - Obrigado pelos cursos e pelo PDF da GLOSSÁRIO
 GLOSSÁRIO - Obrigado pela ajuda para achar os comandos básicos de SQL    
 Chat GPT - Obrigado pela ajuda da formação do modelo conceitual do Software e na listagem dos comandos de SQL    
-Deep Seek - Obrigado pela ajuda na análise da lógica do código  
-Gemini - Obrigado pela ajuda na análise da lógica do código e por ter tirado dúvidas sobre certos comantos
+Deep Seek - Obrigado pela ajuda na análise da lógica do código e a achar todos os erros de português 
+Gemini - Obrigado pela ajuda na análise da lógica do código e por ter tirado dúvidas sobre certos comandos
 """
     return obrigados
 
@@ -1803,7 +1770,7 @@ Qual número você vai escolher:
                                            | 48 - Para sair                       |   
                                            +--------------------------------------+
 
-Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para tudo funcionar, não esqueça deçe :)
+Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para tudo funcionar, não esqueça dele :)
             """)
 
         opcao = input("Qual número vai ser: ")
@@ -1830,7 +1797,7 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
         elif opcao == "10":
             resultado = delete()
         elif opcao == "11":
-            resultado = creat_table()
+            resultado = create_table()
         elif opcao == "12":
             resultado = alter_table()
         elif opcao == "13":
@@ -1862,7 +1829,7 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
         elif opcao == "26":
             resultado = offset()
         elif opcao == "27":
-            resultado = limit_and_offser()
+            resultado = limit_and_offset()
         elif opcao == "28":
             resultado = not_null()
         elif opcao == "29":
@@ -1876,7 +1843,7 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
         elif opcao == "33":
             resultado = drop_index()
         elif opcao == "34":
-            resultado = creat_view()
+            resultado = create_view()
         elif opcao == "35":
             resultado = drop_view()
         elif opcao == "36":
@@ -1888,7 +1855,7 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
         elif opcao == "39":
             resultado = rollback()
         elif opcao == "40":
-            resultado = savepont()
+            resultado = savepoint()
         elif opcao == "41":
             resultado = union()
         elif opcao == "42":
@@ -1920,7 +1887,7 @@ Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para 
         time.sleep(0.2)
         print(f"\n{resultado}\n")
         if pulo == False:
-            input("De enter para voltar ao início\n\n")
+            input("Dê enter para voltar ao início\n\n")
             os.system("cls" if os.name == "nt" else "clear")
         else:
             continue
