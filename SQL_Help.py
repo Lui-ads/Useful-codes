@@ -418,7 +418,12 @@ def operadores_de_comparacao():
     comandos = "=, <, >, <=, >=, <>"
     funcao = "Eles comparam coisas para ver qual é maior, menor, igual ou diferente"
     sintaxe = """
-    algo <> algo_2
+    algo_1 = algo_2
+    algo_4 < algo_5
+    algo_6 > algo_5
+    algo_7 <= algo_8
+    algo_9 >= algo_10
+    algo_11 <> algo_12
     
     Exemplo:
         SELECT * FROM pedidos WHERE valor > 200; 
@@ -427,11 +432,11 @@ def operadores_de_comparacao():
     Obs.: O * é um Operador_Coringa / Wildcard que representa TUDO ou TODOS OS ELEMENTOS em determinado contexto
     """
     
-    if acao == 1:
+    if acao == "1":
         return comandos
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -458,11 +463,11 @@ def operadores_logicos():
     Obs.: O * é um Operador_Coringa / Wildcard que representa TUDO ou TODOS OS ELEMENTOS em determinado contexto
     """
     
-    if acao == 1:
+    if acao == "1":
         return comandos
-    elif acao == 2:
+    elif acao == "2":
         return funcao
-    elif acao == 3:
+    elif acao == "3":
         return sintaxe
     else:
         return "Escolha inválida"
@@ -1754,21 +1759,21 @@ while True:
         print("""
 Qual número você vai escolher:
 
-+--------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
-|    DQL / DML / DDL|      |   |   Estruturas e Conceitos   |   |   Agrupamento e Extras   |   |    Estruturas Finais     |
-+--------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
-| 1  - SELECT              |   | 12 - ALTER TABLE           |   | 23 - HAVING              |   | 34 - CREATE VIEW         |
-| 2  - WHERE               |   | 13 - DROP TABLE            |   | 24 - Subconsultas Correl |   | 35 - DROP VIEW           |
-| 3  - DISTINCT            |   | 14 - PRIMARY KEY           |   | 25 - LIMIT               |   | 36 - CASE                |
-| 4  - ORDER BY            |   | 15 - FOREIGN KEY           |   | 26 - OFFSET              |   | 37 - BEGIN / START       |
-| 5  - AS (ALIAS)          |   | 16 - Operadores Comparação |   | 27 - LIMIT + OFFSET      |   | 38 - COMMIT              |
-| 6  - FROM                |   | 17 - Operadores Lógicos    |   | 28 - NOT NULL            |   | 39 - ROLLBACK            |
-| 7  - INSERT INTO         |   | 18 - Tipos                 |   | 29 - UNIQUE              |   | 40 - SAVEPOINT           |
-| 8  - INSERT INTO+SELECT  |   | 19 - Agregações            |   | 30 - DEFAULT             |   | 41 - UNION               |
-| 9  - UPDATE              |   | 20 - Subconjuntos          |   | 31 - CHECK               |   | 42 - UNION ALL           |
-| 10 - DELETE              |   | 21 - JOIN                  |   | 32 - CREATE INDEX        |   | 43 - INTERSECT           |
-| 11 - CREATE TABLE        |   | 22 - GROUP BY              |   | 33 - DROP INDEX          |   | 44 - EXCEPT              |
-+--------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
++----------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
+|      DQL / DML / DDL       |   Estruturas e Conceitos   |   |   Agrupamento e Extras   |   |    Estruturas Finais     |
++----------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
+| 1  - SELECT                |   | 12 - ALTER TABLE           |   | 23 - HAVING              |   | 34 - CREATE VIEW         |
+| 2  - WHERE                 |   | 13 - DROP TABLE            |   | 24 - Subconsultas Correl |   | 35 - DROP VIEW           |
+| 3  - DISTINCT              |   | 14 - PRIMARY KEY           |   | 25 - LIMIT               |   | 36 - CASE                |
+| 4  - ORDER BY              |   | 15 - FOREIGN KEY           |   | 26 - OFFSET              |   | 37 - BEGIN / START       |
+| 5  - AS (ALIAS)            |   | 16 - Operadores Comparação |   | 27 - LIMIT + OFFSET      |   | 38 - COMMIT              |
+| 6  - FROM                  |   | 17 - Operadores Lógicos    |   | 28 - NOT NULL            |   | 39 - ROLLBACK            |
+| 7  - INSERT INTO           |   | 18 - Tipos                 |   | 29 - UNIQUE              |   | 40 - SAVEPOINT           |
+| 8  - INSERT INTO + SELECT  |   | 19 - Agregações            |   | 30 - DEFAULT             |   | 41 - UNION               |
+| 9  - UPDATE                |   | 20 - Subconjuntos          |   | 31 - CHECK               |   | 42 - UNION ALL           |
+| 10 - DELETE                |   | 21 - JOIN                  |   | 32 - CREATE INDEX        |   | 43 - INTERSECT           |
+| 11 - CREATE TABLE          |   | 22 - GROUP BY              |   | 33 - DROP INDEX          |   | 44 - EXCEPT              |
++----------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
 
 +--------------------------------------+   +--------------------------------------+
 |           Comandos interativos       |   |            Comandos úteis            |
