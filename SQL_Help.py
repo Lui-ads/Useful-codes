@@ -1,4 +1,4 @@
-# Essa é a versão 1.5 do SQL Help, quando eu atualizar irei atualizar aqui no GitHub também
+# Essa é a versão 1.5 do SQL Help
 
 import time
 import os
