@@ -1786,7 +1786,7 @@ Qual número você vai escolher:
 | 2  - WHERE               |   | 13 - DROP TABLE          |   | 24 - Subconsultas Correl |   | 35 - DROP VIEW           |
 | 3  - DISTINCT            |   | 14 - PRIMARY KEY         |   | 25 - LIMIT               |   | 36 - CASE                |
 | 4  - ORDER BY            |   | 15 - FOREIGN KEY         |   | 26 - OFFSET              |   | 37 - BEGIN / START       |
-| 5  - AS (ALIAS)          |   | 16 - Operadores Comp.    |   | 27 - LIMIT + OFFSET      |   | 38 - COMMIT              |
+| 5  - AS (ALIAS)          |   | 16 - Operadores Comp     |   | 27 - LIMIT + OFFSET      |   | 38 - COMMIT              |
 | 6  - FROM                |   | 17 - Operadores Lógicos  |   | 28 - NOT NULL            |   | 39 - ROLLBACK            |
 | 7  - INSERT INTO         |   | 18 - Tipos               |   | 29 - UNIQUE              |   | 40 - SAVEPOINT           |
 | 8  - INSERT INTO+SELECT  |   | 19 - Agregações          |   | 30 - DEFAULT             |   | 41 - UNION               |
