@@ -1763,7 +1763,7 @@ Para ver essas funções avançadas, consulte documentações oficiais do banco 
 def agradecimentos():
     obrigados = """
 Alura - Obrigado pelos cursos e pelo PDF da GLOSSÁRIO
-GLOSSÁRIO Obrigado pela ajuda para achar os comandos básicos de SQL    
+GLOSSÁRIO - Obrigado pela ajuda para achar os comandos básicos de SQL    
 Chat GPT - Obrigado pela ajuda da formação do modelo conceitual do Software e na listagem dos comandos de SQL    
 Deep Seek - Obrigado pela ajuda na análise da lógica do código  
 Gemini - Obrigado pela ajuda na análise da lógica do código e por ter tirado dúvidas sobre certos comantos
