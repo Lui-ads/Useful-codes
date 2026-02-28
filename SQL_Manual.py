@@ -113,6 +113,8 @@ def alter_table():
     
     Exemplo 2: ALTER TABLE nome_da_tabela DROP COLUMN nome_da_coluna;
         # Nesse caso ele exclui a coluna pedida | CUIDADO! pois isso exclui permanentemente a coluna
+        
+    Obs.: Posso usar outras opções além do ADD, como o DROP etc...
     """
 
     if acao == 1:
@@ -403,6 +405,8 @@ def delete():
     DELETE FROM tabela WHERE condicao;
     
     Exemplo: DELETE FROM clientes WHERE id = 5;
+    
+    Obs.: Posso usar também o TUNCATE, ele é tipo um DELETE, mas sem possíbilidade de condições.
     """
     
     if acao == 1:
@@ -443,6 +447,57 @@ Obs.: Existem outros tipos, mas esses são os mais usados
 
     return tipo
     
+    
+def subconjuntos():
+    acao = int(input("""
+Qual número você vai escolher:
+1 - DDL
+2 - DML
+3 - DCL
+4 - TCL          
+Qual seu número: """))
+    
+    if acao == 1:
+        resposta = """
+DDL (Lida com a ESTRUTURA do banco de dados):
+    Lida com a ESTRUTURA do banco de dados
+        CREATE  - Cria bancos, tabelas, índices, views
+        ALTER   - Modifica a estrutura existente
+        DROP    - Remove completamente tabelas ou bancos
+        TRUNCATE- Remove todos os dados mas mantém a estrutura
+        RENAME  - Renomeia objetos (tabelas, colunas)
+"""
+        return resposta
+    elif acao == 2:
+        resposta = """
+DML (DATA MANIPULATION LANGUAGE):
+    Lida com os DADOS dentro das tabelas
+        SELECT  - Consulta/recupera dados
+        INSERT  - Adiciona novos registros
+        UPDATE  - Modifica dados existentes
+        DELETE  - Remove registros específicos
+"""
+        return resposta
+    elif acao == 3:
+        resposta = """
+DCL (DATA CONTROL LANGUAGE): 
+    Controla permissões e acesso
+        GRANT   - Concede permissões
+        REVOKE  - Remove permissões
+"""
+        return resposta
+    elif acao == 4:
+        resposta = """
+TCL (TRANSACTION CONTROL LANGUAGE):
+    Gerencia transações
+        COMMIT    - Confirma alterações
+        ROLLBACK  - Desfaz alterações
+        SAVEPOINT - Cria ponto de restauração        
+"""
+        return resposta
+    else:
+        resposta = "Opção inválida"
+        return resposta
     
 def criacao():
     valor = False
@@ -595,8 +650,12 @@ n - AS (ALIAS)
 o - UPDATE
 p - DELETE
 q - Tipos
+r - Subconjuntos
+
 Para criar uma tabela com ajuda escreva: Criar
 Para sair, digite: Sair
+
+Obs.: Lembre que ao fazer um Banco de Dados em SQL o ; é muito importante para tudo funcionar, não esqueça deçe :)
             """)
 
         opcao = input("Qual letra vai ser: ")
@@ -638,6 +697,8 @@ Para sair, digite: Sair
         
         elif opcao == "q":
             resultado = tipos()
+        elif opcao == "r":
+            resultado = subconjuntos()
         elif opcao == "criar":
             resultado = criacao()
         elif opcao == "limpar":
