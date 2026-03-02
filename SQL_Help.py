@@ -510,8 +510,13 @@ As agregações são:
     SUM()    - Soma valores numéricos
     AVG()    - Calcula a média
     MAX()    - Retorna o maior valor
-    MIN()    - Retorna o menor valor    
+    MIN()    - Retorna o menor valor
 
+Funções de arredondamento:
+    ROUND()  - Arredonda números para casas decimais específicas
+    CEIL()   - Arredonda para cima (teto)
+    FLOOR()  - Arredonda para baixo (chão)    
+    
 Exemplos de agregações:
 
     COUNT(*): SELECT COUNT(*) FROM clientes;
@@ -523,10 +528,26 @@ Exemplos de agregações:
     MAX: SELECT MAX(valor) FROM pedidos;
     MIN: SELECT MIN(valor) FROM pedidos;
 
-    COM GROUP BY:
-    SELECT categoria, COUNT(*), AVG(preco) 
-    FROM produtos 
-    GROUP BY categoria;    
+Exemplos com ROUND, CEIL e FLOOR:
+    SELECT 
+        nome_produto,
+        preco,
+        ROUND(preco, 0) AS preco_inteiro,
+        ROUND(preco * 1.1, 2) AS preco_com_imposto
+    FROM produtos;
+    
+    SELECT 
+        pedido_id,
+        dias_para_entrega,
+        CEIL(dias_para_entrega) AS dias_uteis_necessarios
+    FROM pedidos;
+    
+    SELECT 
+        nome,
+        data_nascimento,
+        FLOOR(DATEDIFF(CURDATE(), data_nascimento) / 365) AS idade_anos_completos
+    FROM clientes;
+    
     """
     return resposta
 
@@ -1760,7 +1781,7 @@ while True:
 Qual número você vai escolher:
 
 +----------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
-|      DQL / DML / DDL       |   Estruturas e Conceitos   |   |   Agrupamento e Extras   |   |    Estruturas Finais     |
+|      DQL / DML / DDL       |   |   Estruturas e Conceitos   |   |   Agrupamento e Extras   |   |    Estruturas Finais     |
 +----------------------------+   +----------------------------+   +--------------------------+   +--------------------------+
 | 1  - SELECT                |   | 12 - ALTER TABLE           |   | 23 - HAVING              |   | 34 - CREATE VIEW         |
 | 2  - WHERE                 |   | 13 - DROP TABLE            |   | 24 - Subconsultas Correl |   | 35 - DROP VIEW           |
@@ -1783,9 +1804,11 @@ Qual número você vai escolher:
                                            | 48 - Para sair                       |   
                                            +--------------------------------------+
 
-Obs.: Lembre-se de duas coisas:
+Obs.: Lembre-se de quatro coisas:
     1 - Ao fazer um Banco de Dados em SQL o ; é muito importante para tudo funcionar, não esqueça dele
     2 - No uso do SQL quando for usar tabela.coluna, lembre que primeiro vem a TABELA, depois a COLUNA
+    3 - O * é um Operador_Coringa / Wildcard que representa TUDO ou TODOS OS ELEMENTOS em determinado contexto
+    4 - É importante usar a sintaxe tabela.coluna para evitar ambiguidades na consulta
     
     :)
 """)
