@@ -1816,6 +1816,7 @@ Obs.: Lembre-se de quatro coisas:
         opcao = input("Qual número vai ser: ")
         opcao = opcao.strip().lower()
 
+        os.system("cls" if os.name == "nt" else "clear")
         if opcao == "1":
             resultado = select()
         elif opcao == "2":
